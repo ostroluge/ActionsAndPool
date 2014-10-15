@@ -10,12 +10,8 @@ public class SequentialScheduler extends Scheduler {
 		super(l);
 	}
 
-	
-
-	// TO-DO
-	@Override
 	public void reallyDoStep() {
-		// TODO Auto-generated method stub
+		listAct.get(0).reallyDoStep();
 
 	}
 
