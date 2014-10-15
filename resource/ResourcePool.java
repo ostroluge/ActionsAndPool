@@ -28,7 +28,7 @@ public abstract class ResourcePool<R extends Resource> {
 			availableResources.remove(res);
 			return res;
 		} else {
-			throw new NoSuchElementException("No available resources");
+			throw new NoSuchElementException("No resources available");
 		}
 	}
 
