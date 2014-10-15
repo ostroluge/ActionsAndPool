@@ -11,7 +11,6 @@ public class ForeseeableAction extends Action {
 			throw new IllegalArgumentException();
 		}
 		this.timeRemaining = timeRemaining;
-		
 	}
 	
 	public boolean isReady(){
@@ -25,5 +24,4 @@ public class ForeseeableAction extends Action {
 	public void reallyDoStep(){
 		timeRemaining --;
 	}
-
 }
