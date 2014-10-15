@@ -1,4 +1,4 @@
-ActionsAndPool
+Project 2 : Actions And the Pool
 ==============
 Names:
 LEFEBVRE Alexandre
