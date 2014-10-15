@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import poolStructure.Swimmer;
+
 
 
 import action.Action;
@@ -41,6 +43,11 @@ public abstract class Scheduler extends Action {
 			}
 		}
 	}
+	
+	public void addAction(Swimmer s){
+		
+	}
+	
 	public boolean isFinished(){
 		if(listAct.size()==1){
 			return listAct.get(0).isFinished();
@@ -50,7 +57,7 @@ public abstract class Scheduler extends Action {
 	
 	public void doStep(){
 		if(listAct.get(0).getTime()==0){
-			throw new NoSuchElementException();
+			throw new NoSuchElementException("No more steps to do");
 		}
 		listAct.get(0).reallyDoStep();
 	}
@@ -69,5 +76,6 @@ public abstract class Scheduler extends Action {
 		}
 		throw new NoSuchElementException("No more Actions available");
 	}
+	
 
 }
