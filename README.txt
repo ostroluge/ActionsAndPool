@@ -15,6 +15,4 @@ Summary :
 6) Known bugs
 
 
-
-
 1) Description of the application
