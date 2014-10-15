@@ -17,10 +17,8 @@ public class FairScheduler extends Scheduler {
 		super(l);
 		this.currentAction = currentAction;
 	}
-	
-	@Override
+		
 	public void reallyDoStep() {
 		currentAction.reallyDoStep();
-		
 	}
 }
