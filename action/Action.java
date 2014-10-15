@@ -19,7 +19,7 @@ public abstract class Action {
 	public abstract boolean isReady();
 	
 	public boolean isInProgress(){
-		if(this.isFinished() == false){
+		if(this.isFinished() == false && this.isReady() == false){
 			return true;
 		}
 		return false;
