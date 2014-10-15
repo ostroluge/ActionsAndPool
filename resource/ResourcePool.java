@@ -39,7 +39,6 @@ public abstract class ResourcePool<R extends Resource> {
 
 	public abstract R createResource();
 	
-	
 	public String description() {
 		return null;
 	}
