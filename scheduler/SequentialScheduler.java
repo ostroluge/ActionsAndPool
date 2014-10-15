@@ -12,9 +12,5 @@ public class SequentialScheduler extends Scheduler {
 
 	public void reallyDoStep() {
 		listAct.get(0).reallyDoStep();
-
 	}
-
-	
-
 }
