@@ -1,5 +1,7 @@
 package resource;
 
+import action.Action;
+
 public class TakeResourceAction extends ResourcePoolAction <Resource>{
 	
 	public TakeResourceAction(){
@@ -26,8 +28,14 @@ public class TakeResourceAction extends ResourcePoolAction <Resource>{
 		
 	}
 	
-	public Resource provideResource(){
-		
+	public boolean tryAction(){
+		return (!super.pool.availableResources.isEmpty());
 	}
-
+/*	
+	public Resource provideResource(){
+	}
+*/
+	public Action createAction() {
+		return null;
+	}
 }
