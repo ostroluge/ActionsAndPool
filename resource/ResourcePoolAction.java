@@ -2,24 +2,26 @@ package resource;
 
 import action.Action;
 
-public class ResourcePoolAction <R extends Resource> extends Action {
+public abstract class ResourcePoolAction <R extends Resource> extends Action {
 
-	@Override
+	protected ResourcePool<R> pool;
+	protected ResourcefulUser<R> user;
+	protected boolean finished, ready;
+	
+	
 	public boolean isReady() {
-		// TODO Auto-generated method stub
-		return false;
+		return ready;
 	}
 
-	@Override
 	public boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		return finished;
 	}
 
-	@Override
 	public void reallyDoStep() {
-		// TODO Auto-generated method stub
-		
+	
 	}
-
+	
+	public abstract boolean tryAction();
+	/* Vérifier s'il y a les ressources */ 
 }
+
