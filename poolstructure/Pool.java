@@ -5,6 +5,13 @@ import resource.CubiclePool;
 import scheduler.FairScheduler;
 import action.ActionFinishedException;
 
+/**
+ * This class is the main class of the program, it uses the actions, resources
+ * and schedulers altogether to solve the pool problem
+ * 
+ * @author Alexandre LEFEBVRE - Thomas OSTROWSKI
+ */
+
 public class Pool {
 
 	public static void main(String[] args) throws ActionFinishedException {
@@ -12,22 +19,21 @@ public class Pool {
 		BasketPool baskets = new BasketPool(6);
 		CubiclePool cubicles = new CubiclePool(3);
 		FairScheduler s = new FairScheduler();
-	
+
 		s.addAction(new Swimmer("Jacky", baskets, cubicles, 6, 4, 8));
 		s.addAction(new Swimmer("Maurice", baskets, cubicles, 6, 4, 8));
 		s.addAction(new Swimmer("Eliot", baskets, cubicles, 6, 4, 8));
 		s.addAction(new Swimmer("Charles", baskets, cubicles, 6, 4, 8));
 		s.addAction(new Swimmer("Mouloud", baskets, cubicles, 6, 4, 8));
 		s.addAction(new Swimmer("Momo", baskets, cubicles, 6, 4, 8));
-		
+
 		int nbSteps = 0;
-		
-		while(!s.isFinished()){
+
+		while (!s.isFinished()) {
 			nbSteps++;
 			s.doStep();
 		}
-		
+
 		System.out.println("Finished in " + nbSteps + " steps");
-		
 	}
 }
