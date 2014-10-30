@@ -1,5 +1,7 @@
 package resource;
 
+import action.Action;
+
 public class FreeResourceAction extends ResourcePoolAction<Resource> {
 		
 	public FreeResourceAction(){
@@ -26,7 +28,15 @@ public class FreeResourceAction extends ResourcePoolAction<Resource> {
 		
 	}
 	
+	public boolean tryAction(){
+		return true;
+	}
+	
 	public void freeAction(){
 		
+	}
+
+	public Action createAction() {
+		return null;
 	}
 }
