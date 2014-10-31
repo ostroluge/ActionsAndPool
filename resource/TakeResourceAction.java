@@ -1,31 +1,22 @@
 package resource;
-
-import action.Action;
+import action.OneStepAction;
 
 public class TakeResourceAction extends ResourcePoolAction <Resource>{
+	
+	protected Resource r;
 	
 	public TakeResourceAction(){
 		
 	}
 	
-	public boolean isReady(){
-		return true;
-	}
-
-	public boolean isInProgress(){
-		return true;
-	}
-	
-	public boolean isFinished(){
-		return true;
-	}
-	
-	public void doStep(){
-		
+	public TakeResourceAction(Resource r){
+		this.r = r;
 	}
 	
 	public void reallyDoStep(){
-		
+		if(tryAction()){
+			super.user.setResource(super.pool.provideResource());
+		}
 	}
 	
 	public boolean tryAction(){
@@ -35,7 +26,7 @@ public class TakeResourceAction extends ResourcePoolAction <Resource>{
 	public Resource provideResource(){
 	}
 */
-	public Action createAction() {
-		return null;
+	public OneStepAction createAction() {
+		return new OneStepAction();
 	}
 }
