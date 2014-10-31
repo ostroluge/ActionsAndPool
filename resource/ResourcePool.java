@@ -32,14 +32,14 @@ public abstract class ResourcePool<R extends Resource> {
 		}
 	}
 
-	public boolean freeResource(R res) throws IllegalArgumentException {
+	public void freeResource(R res) throws IllegalArgumentException {
 		availableResources.add(res);
-		return resourcesInUse.remove(res);
+		resourcesInUse.remove(res);
 	}
 
 	public abstract R createResource();
 	
-	public String description() {
-		return null;
+	public String getDescription() {
+		return "All the resources of the pool";
 	}
 }
