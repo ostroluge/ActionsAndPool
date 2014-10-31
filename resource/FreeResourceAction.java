@@ -1,42 +1,32 @@
 package resource;
 
-import action.Action;
+import action.OneStepAction;
 
 public class FreeResourceAction extends ResourcePoolAction<Resource> {
 		
+	protected Resource r;
+	
 	public FreeResourceAction(){
 		
 	}
+	
+	public FreeResourceAction(Resource r){
+		this.r = r;
+	}
 
-	public boolean isReady(){
-		return true;
-	}
-
-	public boolean isInProgress(){
-		return true;
-	}
-	
-	public boolean isFinished(){
-		return true;
-	}
-	
-	public void doStep(){
-		
-	}
-	
 	public void reallyDoStep(){
-		
+		super.user.resetResource();
 	}
 	
 	public boolean tryAction(){
 		return true;
 	}
 	
-	public void freeAction(){
+	public void freeResource(){
 		
 	}
 
-	public Action createAction() {
-		return null;
+	public OneStepAction createAction() {
+		return new OneStepAction();
 	}
 }
