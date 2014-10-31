@@ -1,8 +1,12 @@
 package poolStructure;
 
 import action.Action;
+import action.ForeseeableAction;
+import action.OneStepAction;
 import resource.BasketPool;
 import resource.CubiclePool;
+import resource.FreeResourceAction;
+import resource.TakeResourceAction;
 import scheduler.SequentialScheduler;
 
 /**
@@ -21,7 +25,7 @@ public class Swimmer extends Action {
 	protected SequentialScheduler sqs;
 
 	public Swimmer() {
-
+		
 	}
 
 	/**
@@ -50,6 +54,25 @@ public class Swimmer extends Action {
 		this.timeToGetUndressed = timeToGetDressed;
 		this.swimmingTime = swimmingTime;
 		this.timeToGetDressed = timeToGetDressed;
+		
+		/*
+		TakeResourceAction takeBasket = new TakeResourceAction(b);
+		TakeResourceAction takeCubicleBeforeGoingToThePool = new TakeResourceAction(c);
+		FreeResourceAction freeCubicleBeforeGoingToThePool = new FreeResourceAction(c);
+		TakeResourceAction takeCubicleAfterSwimming = new TakeResourceAction(c);
+		FreeResourceAction freeCubicle = new FreeResourceAction(c);
+		FreeResourceAction freeBasket = new FreeResourceAction(b);
+		
+		this.sqs.addAction(takeBasket.createAction());
+		this.sqs.addAction(takeCubicleBeforeGoingToThePool.createAction());
+		this.sqs.addAction(new ForeseeableAction(timeToGetUndressed, timeToGetUndressed));
+		this.sqs.addAction(freeCubicleBeforeGoingToThePool.createAction());
+		this.sqs.addAction(new ForeseeableAction(swimmingTime, swimmingTime));
+		this.sqs.addAction(takeCubicleAfterSwimming.createAction());
+		this.sqs.addAction(new ForeseeableAction(timeToGetDressed, timeToGetDressed));
+		this.sqs.addAction(freeCubicle.createAction());
+		this.sqs.addAction(freeBasket.createAction());
+		*/
 	}
 
 	/**
