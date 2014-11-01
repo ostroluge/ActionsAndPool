@@ -1,4 +1,4 @@
-package poolStructure;
+package poolstructure;
 
 import resource.BasketPool;
 import resource.CubiclePool;
