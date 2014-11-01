@@ -1,4 +1,4 @@
-package poolStructure;
+package poolstructure;
 
 import action.Action;
 import action.ForeseeableAction;
