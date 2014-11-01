@@ -3,4 +3,4 @@
  * 
  * @author Alexandre LEFEBVRE - Thomas OSTROWSKI
  */
-package poolStructure;
+package poolstructure;
