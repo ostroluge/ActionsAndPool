@@ -47,7 +47,7 @@ public abstract class Action {
 	 * @return true if and only if the action is on progress
 	 */
 	public boolean isInProgress() {
-		if (this.isFinished() == false) {
+		if (this.isFinished() == false && this.isReady()==false) {
 			return true;
 		}
 		return false;
