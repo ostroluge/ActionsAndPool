@@ -40,9 +40,8 @@ public class SequentialSchedulerTest extends SchedulerTest{
 		
 	}
 
-	@Override
-	public Action createAction() {
-		return new SequentialScheduler(listAct);
+	public SequentialScheduler createAction() {
+		return new SequentialScheduler();
 	}
 
 }
