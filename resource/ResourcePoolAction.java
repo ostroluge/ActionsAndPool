@@ -9,6 +9,15 @@ public abstract class ResourcePoolAction <R extends Resource> extends Action {
 	protected boolean finished, ready;
 	
 	
+	public ResourcePoolAction(ResourcePool<R> p, ResourcefulUser<R> ru){
+		this.pool = p;
+		this.user = ru;
+	}
+	
+	public ResourcePoolAction(){
+		
+	}
+	
 	public boolean isReady() {
 		return ready;
 	}
@@ -22,6 +31,6 @@ public abstract class ResourcePoolAction <R extends Resource> extends Action {
 	}
 	
 	public abstract boolean tryAction();
-	/* Vérifier s'il y a les ressources */ 
+	/* VÃ©rifier s'il y a les ressources */ 
 }
 
