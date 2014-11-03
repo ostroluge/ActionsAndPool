@@ -13,6 +13,10 @@ import action.Action;
 
 public class SequentialScheduler extends Scheduler {
 
+	public SequentialScheduler(){
+		
+	}
+	
 	/**
 	 * Constructor of a sequential scheduler which initializes a sequential
 	 * scheduler with the list of actions given in parameters
