@@ -19,7 +19,6 @@ public class FreeResourceAction<R extends Resource> extends Action {
 	}*/
 
 	public void reallyDoStep() {
-		super.doStep();
 		tmp1=this.rp.resourcesInUse.size();
 		rp.freeResource(this.ru.getResource());
 		tmp2=this.rp.resourcesInUse.size();
