@@ -1,11 +1,12 @@
 package poolstructure;
 
-import action.Action;
 import action.ForeseeableAction;
-import action.OneStepAction;
+import resource.Basket;
 import resource.BasketPool;
+import resource.Cubicle;
 import resource.CubiclePool;
 import resource.FreeResourceAction;
+import resource.ResourcefulUser;
 import resource.TakeResourceAction;
 import scheduler.SequentialScheduler;
 
@@ -16,13 +17,14 @@ import scheduler.SequentialScheduler;
  * @author Alexandre LEFEBVRE - Thomas OSTROWSKI
  */
 
-public class Swimmer extends Action {
+public class Swimmer extends SequentialScheduler {
 
 	protected String name;
 	protected BasketPool basket;
 	protected CubiclePool cubicle;
+	protected ResourcefulUser<Basket> b;
+	protected ResourcefulUser<Cubicle> c;
 	protected int timeToGetUndressed, swimmingTime, timeToGetDressed;
-	protected SequentialScheduler sqs;
 
 	public Swimmer() {
 		
@@ -46,35 +48,41 @@ public class Swimmer extends Action {
 	 * @param timeToGetDressed
 	 *            The time he needs to get dressed
 	 */
-	public Swimmer(String name, BasketPool b, CubiclePool c,
+	public Swimmer(String name, BasketPool basket, CubiclePool cubicle,
 			int timeToGetUndressed, int swimmingTime, int timeToGetDressed) {
 		this.name = name;
-		this.basket = b;
-		this.cubicle = c;
+		this.basket = basket;
+		this.cubicle = cubicle;
 		this.timeToGetUndressed = timeToGetDressed;
 		this.swimmingTime = swimmingTime;
 		this.timeToGetDressed = timeToGetDressed;
 		
-		/*
-		TakeResourceAction takeBasket = new TakeResourceAction(b);
-		TakeResourceAction takeCubicleBeforeGoingToThePool = new TakeResourceAction(c);
-		FreeResourceAction freeCubicleBeforeGoingToThePool = new FreeResourceAction(c);
-		TakeResourceAction takeCubicleAfterSwimming = new TakeResourceAction(c);
-		FreeResourceAction freeCubicle = new FreeResourceAction(c);
-		FreeResourceAction freeBasket = new FreeResourceAction(b);
+		this.b = new ResourcefulUser<Basket>();
+		this.c = new ResourcefulUser<Cubicle>();
 		
-		this.sqs.addAction(takeBasket.createAction());
-		this.sqs.addAction(takeCubicleBeforeGoingToThePool.createAction());
-		this.sqs.addAction(new ForeseeableAction(timeToGetUndressed, timeToGetUndressed));
-		this.sqs.addAction(freeCubicleBeforeGoingToThePool.createAction());
-		this.sqs.addAction(new ForeseeableAction(swimmingTime, swimmingTime));
-		this.sqs.addAction(takeCubicleAfterSwimming.createAction());
-		this.sqs.addAction(new ForeseeableAction(timeToGetDressed, timeToGetDressed));
-		this.sqs.addAction(freeCubicle.createAction());
-		this.sqs.addAction(freeBasket.createAction());
-		*/
+		initializeActions();
 	}
 
+	public void initializeActions(){
+		
+		TakeResourceAction<Basket> takeBasket = new TakeResourceAction<Basket>(this.basket, this.b);
+		TakeResourceAction<Cubicle> takeCubicleBeforeGoingToThePool = new TakeResourceAction<Cubicle>(this.cubicle, this.c);
+		FreeResourceAction<Cubicle> freeCubicleBeforeGoingToThePool = new FreeResourceAction<Cubicle>(this.cubicle, this.c);
+		TakeResourceAction<Cubicle> takeCubicleAfterSwimming = new TakeResourceAction<Cubicle>(this.cubicle, this.c);
+		FreeResourceAction<Cubicle> freeCubicle = new FreeResourceAction<Cubicle>(this.cubicle, this.c);
+		FreeResourceAction<Basket> freeBasket = new FreeResourceAction<Basket>(this.basket, this.b);
+	
+		this.addAction(takeBasket.createAction());
+		this.addAction(takeCubicleBeforeGoingToThePool.createAction());
+		this.addAction(new ForeseeableAction(timeToGetUndressed, timeToGetUndressed));
+		this.addAction(freeCubicleBeforeGoingToThePool.createAction());
+		this.addAction(new ForeseeableAction(swimmingTime, swimmingTime));
+		this.addAction(takeCubicleAfterSwimming.createAction());
+		this.addAction(new ForeseeableAction(timeToGetDressed, timeToGetDressed));
+		this.addAction(freeCubicle.createAction());
+		this.addAction(freeBasket.createAction());
+	}
+	
 	/**
 	 * Indicates if a swimmer is ready
 	 * 
