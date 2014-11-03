@@ -32,9 +32,12 @@ public class SequentialScheduler extends Scheduler {
 	 * Realizes the step of the first action of the list
 	 */
 	public void reallyDoStep() {
-		listAct.get(0).reallyDoStep();
+		update();
+		listAct.get(0).doStep();
 	}
 
+	
+	
 	public Action createAction() {
 		return null;
 	}
