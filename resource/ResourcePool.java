@@ -11,6 +11,14 @@ public abstract class ResourcePool<R extends Resource> {
 	protected List<R> availableResources;
 
 	
+	public List<R> getResourcesInUse() {
+		return resourcesInUse;
+	}
+
+	public List<R> getAvailableResources() {
+		return availableResources;
+	}
+
 	public ResourcePool(int nbRes){
 		availableResources = new ArrayList<R>();
 		resourcesInUse = new ArrayList<R>();
