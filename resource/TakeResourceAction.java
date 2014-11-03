@@ -13,12 +13,21 @@ public class TakeResourceAction <R extends Resource> extends Action {
 		this.user = ru;
 	}
 	
-	public void reallyDoStep() {
+	public void reallyDoStep(){
+		super.doStep();
+		String display;
+		display = "trying to take resource from pool ";
+		display += this.user.getResource().getDescription();
 		tmp1 = this.pool.resourcesInUse.size();
 		if(tryAction()){
 			this.user.setResource(this.pool.provideResource());
 			tmp2 = this.pool.resourcesInUse.size();
+			display += " succes ";
+			display += this.pool.availableResources.size() + " resources available";
+		} else {
+			display += " failed ";
 		}
+		System.out.println(display);
 	}
 	
 	public boolean tryAction(){
