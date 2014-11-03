@@ -30,8 +30,8 @@ public class ForeseeableActionTest extends ActionTest{
 	}
 	
 	
-	public Action createAction() {
-		return new ForeseeableAction(timeRemaining,timeRemaining, name);
+	public ForeseeableAction createAction() {
+		return new ForeseeableAction();
 	}
 
 }
