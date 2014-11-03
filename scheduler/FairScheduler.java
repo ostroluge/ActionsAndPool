@@ -15,9 +15,13 @@ import action.Action;
 public class FairScheduler extends Scheduler {
 
 	protected Action currentAction;
-
+	
 	public FairScheduler() {
+		//this.currentAction = super.listAct.get(0);
+	}
 
+	public void setCurrentAction(Action currentAction) {
+		this.currentAction = currentAction;
 	}
 
 	/**
@@ -38,7 +42,10 @@ public class FairScheduler extends Scheduler {
 	 * Realizes a step of the current action's fair scheduler
 	 */
 	public void reallyDoStep() {
-		currentAction.reallyDoStep();
+		currentAction.doStep();
+		if(currentAction.isFinished()){
+			nextAction().doStep();;
+		}
 	}
 
 	public Action createAction() {
