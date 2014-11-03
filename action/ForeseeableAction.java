@@ -9,7 +9,8 @@ package action;
 
 public class ForeseeableAction extends Action {
 
-	protected int timeRemaining;
+	protected int timeRemaining, stepNumber=1;
+	protected String name;
 
 	/**
 	 * Constructor of a ForeseeableAction that initializes a foreseeable action
@@ -20,12 +21,13 @@ public class ForeseeableAction extends Action {
 	 * @param timeRemaining
 	 *            Number of steps to finish the foreseeable action
 	 */
-	public ForeseeableAction(int time, int timeRemaining) {
+	public ForeseeableAction(int time, int timeRemaining, String name) {
 		super(time);
 		if (time <= 0) {
 			throw new IllegalArgumentException();
 		}
 		this.timeRemaining = timeRemaining;
+		this.name = name;
 	}
 
 	public ForeseeableAction() {
@@ -55,6 +57,10 @@ public class ForeseeableAction extends Action {
 	 */
 	public void reallyDoStep() {
 		timeRemaining--;
+		System.out.println("\t" + this.name + "(" + stepNumber + "/" + super.time + ")");
+		if(stepNumber < super.time){
+			stepNumber++;
+		}
 	}
 
 	/**
