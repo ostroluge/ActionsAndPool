@@ -12,7 +12,6 @@ import action.OneStepAction;
 
 public  abstract class SchedulerTest extends ActionTest{
 
-	@Override
 	public abstract Action createAction();
 	
 
