@@ -33,12 +33,12 @@ public class SequentialScheduler extends Scheduler {
 	 */
 	public void reallyDoStep() {
 		update();
-		listAct.get(0).doStep();
+		listAct.get(0).reallyDoStep();
 	}
 
 	
 	
-	public Action createAction() {
-		return null;
+	public SequentialScheduler createAction() {
+		return new SequentialScheduler();
 	}
 }
