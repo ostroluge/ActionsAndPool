@@ -74,11 +74,11 @@ public class Swimmer extends SequentialScheduler {
 	
 		this.addAction(takeBasket.createAction());
 		this.addAction(takeCubicleBeforeGoingToThePool.createAction());
-		this.addAction(new ForeseeableAction(timeToGetUndressed, timeToGetUndressed));
+		this.addAction(new ForeseeableAction(timeToGetUndressed, timeToGetUndressed, "undressing"));
 		this.addAction(freeCubicleBeforeGoingToThePool.createAction());
-		this.addAction(new ForeseeableAction(swimmingTime, swimmingTime));
+		this.addAction(new ForeseeableAction(swimmingTime, swimmingTime, "swimming"));
 		this.addAction(takeCubicleAfterSwimming.createAction());
-		this.addAction(new ForeseeableAction(timeToGetDressed, timeToGetDressed));
+		this.addAction(new ForeseeableAction(timeToGetDressed, timeToGetDressed, "dressing"));
 		this.addAction(freeCubicle.createAction());
 		this.addAction(freeBasket.createAction());
 	}
@@ -105,6 +105,8 @@ public class Swimmer extends SequentialScheduler {
 	 * It really realizes a step of an action
 	 */
 	public void reallyDoStep() {
+		System.out.println(this.name+"'s turn");
+		super.doStep();
 	}
 
 	/**
