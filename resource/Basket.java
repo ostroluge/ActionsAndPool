@@ -19,6 +19,6 @@ public class Basket implements Resource {
 	 * @return the description of a basket
 	 */
 	public String getDescription() {
-		return "A basket to put clothes inside";
+		return "basket";
 	}
 }
