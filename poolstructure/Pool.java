@@ -3,6 +3,7 @@ package poolstructure;
 import resource.BasketPool;
 import resource.CubiclePool;
 import scheduler.FairScheduler;
+import action.Action;
 import action.ActionFinishedException;
 
 /**
@@ -20,13 +21,22 @@ public class Pool {
 		CubiclePool cubicles = new CubiclePool(3);
 		FairScheduler s = new FairScheduler();
 
-		s.addAction(new Swimmer("Jacky", baskets, cubicles, 6, 4, 8));
-		s.addAction(new Swimmer("Maurice", baskets, cubicles, 6, 4, 8));
-		s.addAction(new Swimmer("Eliot", baskets, cubicles, 6, 4, 8));
-		s.addAction(new Swimmer("Charles", baskets, cubicles, 6, 4, 8));
-		s.addAction(new Swimmer("Mouloud", baskets, cubicles, 6, 4, 8));
-		s.addAction(new Swimmer("Momo", baskets, cubicles, 6, 4, 8));
+		
+		s.addAction(new Swimmer("Camille", baskets, cubicles, 6, 4, 8));
+		s.addAction(new Swimmer("Loïs", baskets, cubicles, 2, 10, 4));
+		s.addAction(new Swimmer("Maé", baskets, cubicles, 10, 18, 10));
+		s.addAction(new Swimmer("Ange", baskets, cubicles, 3, 7, 5));
+		s.addAction(new Swimmer("Louison", baskets, cubicles, 18, 3, 3));
+		s.addAction(new Swimmer("Charlie", baskets, cubicles, 3, 6, 10));
+		s.addAction(new Swimmer("Alexis", baskets, cubicles, 6, 5, 7));
 
+		
+		System.out.println("scheduler est pret : "+ s.isReady());
+		System.out.println("paniers disponibles : "+ baskets.getAvailableResources().size());
+		System.out.println("cabines disponibles : "+ cubicles.getAvailableResources().size());
+		
+		System.out.println("liste d'actions : "+ s.getListAction().size());
+		
 		int nbSteps = 0;
 
 		while (!s.isFinished()) {
