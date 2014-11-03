@@ -18,6 +18,6 @@ public class Cubicle implements Resource {
 	 * @return the description of a cubicle
 	 */
 	public String getDescription() {
-		return "A place to change clothes";
+		return "cubicle";
 	}
 }
