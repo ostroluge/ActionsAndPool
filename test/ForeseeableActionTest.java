@@ -9,10 +9,11 @@ import action.ForeseeableAction;
 
 public class ForeseeableActionTest extends ActionTest{
 	protected int timeRemaining=2;
+	protected String name = "Forseeable";
 	@Test
 	public void ForeseeableActiontest() {
 		
-		ForeseeableAction fa =new ForeseeableAction(timeRemaining, timeRemaining);
+		ForeseeableAction fa =new ForeseeableAction(timeRemaining, timeRemaining, name);
 		assertTrue(fa.isReady());
 		assertFalse(fa.isInProgress());
 		assertFalse(fa.isFinished());
@@ -30,7 +31,7 @@ public class ForeseeableActionTest extends ActionTest{
 	
 	
 	public Action createAction() {
-		return new ForeseeableAction(timeRemaining,timeRemaining);
+		return new ForeseeableAction(timeRemaining,timeRemaining, name);
 	}
 
 }
