@@ -1,21 +1,21 @@
 package resource;
 
+import action.Action;
 import action.OneStepAction;
 
-public class FreeResourceAction extends ResourcePoolAction<Resource> {
+public class FreeResourceAction <R extends Resource> extends Action {
 		
-	protected Resource r;
+	protected ResourcePool<R> pool;
+	protected ResourcefulUser<R> user;
+	protected int tmp1, tmp2;
 	
-	public FreeResourceAction(){
-		
+	public FreeResourceAction(ResourcePool<R> p, ResourcefulUser<R> ru){
+		this.pool = p;
+		this.user = ru;
 	}
 	
-	public FreeResourceAction(Resource r){
-		this.r = r;
-	}
-
 	public void reallyDoStep(){
-		super.user.resetResource();
+		this.user.resetResource();
 	}
 	
 	public boolean tryAction(){
@@ -28,5 +28,13 @@ public class FreeResourceAction extends ResourcePoolAction<Resource> {
 
 	public OneStepAction createAction() {
 		return new OneStepAction();
+	}
+
+	public boolean isReady() {
+		return tryAction();
+	}
+
+	public boolean isFinished() {
+		return false;
 	}
 }
