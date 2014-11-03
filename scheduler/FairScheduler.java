@@ -42,13 +42,10 @@ public class FairScheduler extends Scheduler {
 	 * Realizes a step of the current action's fair scheduler
 	 */
 	public void reallyDoStep() {
-		currentAction.doStep();
-		if(currentAction.isFinished()){
-			nextAction().doStep();;
-		}
+		currentAction.reallyDoStep();
 	}
 
-	public Action createAction() {
-		return null;
+	public FairScheduler createAction() {
+		return new FairScheduler();
 	}
 }
