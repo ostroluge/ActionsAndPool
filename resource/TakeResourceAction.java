@@ -14,7 +14,6 @@ public class TakeResourceAction <R extends Resource> extends Action {
 	}
 	
 	public void reallyDoStep(){
-		super.doStep();
 		String display;
 		display = "trying to take resource from pool ";
 		display += this.user.getResource().getDescription();
