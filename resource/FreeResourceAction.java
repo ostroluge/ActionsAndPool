@@ -5,14 +5,15 @@ import action.OneStepAction;
 
 public class FreeResourceAction<R extends Resource> extends Action {
 		
-	
 	protected int tmp1,tmp2;
 	protected ResourcePool<R> rp;
 	protected ResourcefulUser<R> ru;
+	
 	public FreeResourceAction(ResourcePool<R> rp,ResourcefulUser<R>ru){
 		this.rp=rp;
 		this.ru=ru;
 	}
+	
 	/*public FreeResourceAction(Resource r){
 		this.r = r;
 	}*/
@@ -34,11 +35,11 @@ public class FreeResourceAction<R extends Resource> extends Action {
 	public OneStepAction createAction() {
 		return new OneStepAction();
 	}
-	@Override
+
 	public boolean isReady() {
 		return true;
 	}
-	@Override
+
 	public boolean isFinished() {
 		return tmp1>tmp2;
 	}
