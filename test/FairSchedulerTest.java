@@ -41,7 +41,7 @@ public class FairSchedulerTest extends SchedulerTest{
 		assertFalse(fs.isFinished());
 		}
 
-	public Action createAction() {
+	public FairScheduler createAction() {
 		return new FairScheduler();
 	}
 
